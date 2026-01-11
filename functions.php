@@ -1,0 +1,30 @@
+<?php
+
+// Menu registration
+function register_menu()
+{
+    register_nav_menus(array(
+        'primary-menu' => __('primary Menu', 'custom-theme')
+    ));
+}
+add_action('after_setup_theme', 'register_menu');
+
+// Enqueue Bootstrap assets
+
+function enqueue_bootstrap()
+{
+    wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+    wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', array(), null, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_bootstrap');
+
+// Enqueue style.css file 
+function mytheme_enqueue_styles()
+{
+    wp_enqueue_style(
+        'mytheme-style',
+        get_stylesheet_uri()
+    );
+}
+add_action('wp_enqueue_scripts', 'mytheme_enqueue_styles');

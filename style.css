@@ -1,0 +1,41 @@
+/* Theme Name: Custom Theme
+Description: Custom theme build for appling the custom theme concepts
+Author: Harsh Bhadauriya
+Version: 1.01  
+Text Domain: Custom-Theme
+*/
+
+.navbar-nav {
+  gap: 10px !important;
+}
+
+ul#menu-header-menu {
+  gap: 20px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-menu a,
+.menu-item a {
+  text-decoration: none;
+  color: gray;
+}
+.footer-menu ul li a {
+  color: white;
+}
+
+.copyright {
+  color: white !important;
+}
+
+#menu-header-menu-1 {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.footer-cont {
+  background-color: gray;
+}
