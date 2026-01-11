@@ -33,3 +33,7 @@ add_theme_support('post-thumbnails');
 
 // Add custom header image
 add_theme_support('custom-header');
+
+// get_template_directory() -> return server path file system
+
+// get_template_directory_uri() -> public url

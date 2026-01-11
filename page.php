@@ -12,6 +12,8 @@ get_header();
 
     $imagePath = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
     // echo $imagePath[0];
+
+ 
     ?>
 </div>
 
