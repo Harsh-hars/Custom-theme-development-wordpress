@@ -4,7 +4,7 @@
     <div class="container">
 
         <a class="navbar-brand" href="<?php echo home_url('/'); ?>">
-            BootStrap
+            <img src="<?php echo get_header_image(); ?>" alt="LOGO" height="100" width="200">
         </a>
 
         <button class="navbar-toggler" type="button"
