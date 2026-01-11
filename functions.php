@@ -37,3 +37,6 @@ add_theme_support('custom-header');
 // get_template_directory() -> return server path file system
 
 // get_template_directory_uri() -> public url
+
+// Add excerpt for the posts
+add_post_type_support('post','excerpt');

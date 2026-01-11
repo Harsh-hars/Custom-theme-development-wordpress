@@ -54,3 +54,10 @@ a.post-card {
   flex-wrap: wrap;
   gap: 20px;
 }
+
+.wp-pagenavi {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}

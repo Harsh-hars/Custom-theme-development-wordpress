@@ -15,14 +15,20 @@ get_header();
                     <div class="card-body">
                         <h4 class="card-text"><?php the_title(); ?></h4>
                         <p class="card-text"><?php the_content(); ?></p>
+                        <p class="card-text"><?php echo get_the_date(); ?></p>
+                        <!-- <p class="card-text"><?php the_excerpt(); ?></p> -->
                     </div>
                 </div>
             </a>
 
     <?php
+
         }
     }
+
     ?>
 </div>
+
 <?php
+echo wp_pagenavi();
 get_footer();
