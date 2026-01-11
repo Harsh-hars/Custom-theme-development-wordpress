@@ -4,7 +4,9 @@ Author: Harsh Bhadauriya
 Version: 1.01  
 Text Domain: Custom-Theme
 */
-
+.navbar {
+  padding: 0;
+}
 .navbar-nav {
   gap: 10px !important;
 }
@@ -16,6 +18,9 @@ ul#menu-header-menu {
 .footer-menu {
   display: flex;
   justify-content: center;
+}
+.footer-cont {
+  margin-top: 10px;
 }
 
 .footer-menu a,
@@ -38,4 +43,14 @@ ul#menu-header-menu {
 
 .footer-cont {
   background-color: gray;
+}
+
+a.post-card {
+  text-decoration: none;
+}
+
+.post-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }

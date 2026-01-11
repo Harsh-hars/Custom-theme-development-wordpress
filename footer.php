@@ -9,6 +9,7 @@
                 'container'       => 'div',
                 'container_class' => 'footer-menu',
                 'menu_class'      => 'navbar-nav',
+                'link_after'      => ' <span class="separator">|</span>',
                 'fallback_cb'     => false,
             ));
             ?>

@@ -20,6 +20,7 @@
             'container_class' => 'collapse navbar-collapse',
             'container_id'    => 'mainNav',
             'menu_class'      => 'navbar-nav ms-auto',
+            'link_after'      => ' <span class="separator">|</span>',
             'fallback_cb'     => false,
         ));
         ?>
