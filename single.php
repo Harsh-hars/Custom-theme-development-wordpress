@@ -15,6 +15,16 @@ the_post();
         <strong>Categories: </strong> <?php the_category(', ') ?> <br />
         <strong>Tags: </strong> <?php the_tags(', ') ?>
     </div>
+    <!-- comment display -->
+    <?php
+    // bring simple form
+    //  comment_form(); 
+    ?>
+
+    <?php
+    // bring both lists and comments
+    // comments_template();
+    ?>
 </div>
 
 <?php get_footer(); ?>
