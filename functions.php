@@ -39,4 +39,10 @@ add_theme_support('custom-header');
 // get_template_directory_uri() -> public url
 
 // Add excerpt for the posts
-add_post_type_support('post','excerpt');
+add_post_type_support('post', 'excerpt');
+
+// adding dynamic widget ready sidebar
+register_sidebar([
+    "name" => "Sidebar",
+    "id" => "side-bar"
+]);

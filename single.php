@@ -24,6 +24,10 @@ the_post();
     <?php
     // bring both lists and comments
     // comments_template();
+
+    dynamic_sidebar('side-bar');
+    // echo wp_title();  
+    echo bloginfo('description');
     ?>
 </div>
 
