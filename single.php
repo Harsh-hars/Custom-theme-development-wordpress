@@ -1,0 +1,20 @@
+<?php get_header();
+the_post();
+?>
+
+<div class="container">
+    <div class="img-cont">
+        <?php the_post_thumbnail('large', ['class' => 'img-fluid rounded']); ?>
+    </div>
+    <div class="meta">
+        <h5 class="uppercase"> By: <?php the_author(); ?> | <?php echo get_the_date(); ?></h5>
+    </div>
+    <h4><?php the_title(); ?></h4>
+    <p><?php the_content(); ?></p>
+    <div class="cat-tags">
+        <strong>Categories: </strong> <?php the_category(', ') ?> <br />
+        <strong>Tags: </strong> <?php the_tags(', ') ?>
+    </div>
+</div>
+
+<?php get_footer(); ?>
