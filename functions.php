@@ -48,3 +48,22 @@ register_sidebar([
 ]);
 
 
+// Adding Custom post type
+
+function register_cpt_books()
+{
+    $labels = [
+        'name' => 'Books',
+        'singular_name' => 'Book',
+    ];
+    $args = [
+        'labels' => $labels,
+        'public' => true,
+        'support' => ['title', 'editor', 'thumbnail'],
+        'show_in_rest' => true
+    ];
+
+    register_post_type('Books', $args);
+}
+
+add_action('init', 'register_cpt_books');
