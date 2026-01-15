@@ -46,3 +46,5 @@ register_sidebar([
     "name" => "Sidebar",
     "id" => "side-bar"
 ]);
+
+
