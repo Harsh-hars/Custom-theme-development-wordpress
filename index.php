@@ -46,4 +46,25 @@ foreach ($categories as $cat) {
 
 }
 echo wp_pagenavi();
+
+// displaying custom post type 
+?>
+<div class="container cpt">
+    <h4 style="text-align: center;">Dispalying custom post type</h4>
+    <?php
+    $wp_args = [
+        'post_type' => 'books',
+        'post_status' => 'publish'
+    ];
+
+    $res = new WP_Query($wp_args);
+    while($res->have_posts()){
+        $res->the_post();
+        the_title();
+        the_content();
+    }
+    ?>
+</div>
+
+<?php
 get_footer();

@@ -60,7 +60,8 @@ function register_cpt_books()
         'labels' => $labels,
         'public' => true,
         'support' => ['title', 'editor', 'thumbnail'],
-        'show_in_rest' => true
+        'show_in_rest' => true,
+        'menu_icon'     => 'dashicons-book'
     ];
 
     register_post_type('Books', $args);
