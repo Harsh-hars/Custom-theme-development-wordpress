@@ -56,27 +56,33 @@ echo wp_pagenavi();
         'post_type' => 'books',
         'post_status' => 'publish'
     ];
-
-    $res = new WP_Query($wp_args);
-    while ($res->have_posts()) {
-        $res->the_post();
-        $imagePath = wp_get_attachment_image_src(get_post_thumbnail_id(), 'medium');
     ?>
-        <a class="post-card" href="<?php the_permalink() ?>">
-            <div class="card" style="width: 18rem;">
-                <img src="<?php echo $imagePath[0] ?>" class="card-img-top" alt="Card-Image">
-                <div class="card-body">
-                    <h4 class="card-text"><?php the_title(); ?></h4>
-                    <p class="card-text"><?php the_content(); ?></p>
-                    <p class="card-text"><?php echo get_the_date(); ?></p>
-                    <!-- <p class="card-text"><?php the_excerpt(); ?></p> -->
+    <div class="container custom-cpt">
+        <?php
+        $res = new WP_Query($wp_args);
+        while ($res->have_posts()) {
+            $res->the_post();
+            $imagePath = wp_get_attachment_image_src(get_post_thumbnail_id(), 'medium');
+        ?>
+
+            <a class="post-card" href="<?php the_permalink() ?>">
+                <div class="card" style="width: 18rem;">
+                    <img src="<?php echo $imagePath[0] ?>" class="card-img-top" alt="Card-Image">
+                    <div class="card-body">
+                        <h4 class="card-text"><?php the_title(); ?></h4>
+                        <p class="card-text"><?php the_content(); ?></p>
+                        <p class="card-text"><?php echo get_the_date(); ?></p>
+                        <!-- <p class="card-text"><?php the_excerpt(); ?></p> -->
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-    <?php
-    }
-    ?>
+
+
+        <?php
+        }
+        ?>
+    </div>
 </div>
 
 <?php

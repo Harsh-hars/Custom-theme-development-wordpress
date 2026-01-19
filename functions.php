@@ -61,7 +61,12 @@ function register_cpt_books()
         'public' => true,
         'supports' => ['title', 'editor', 'thumbnail'],
         'show_in_rest' => true,
-        'menu_icon'     => 'dashicons-book'
+        'menu_icon'     => 'dashicons-book',
+        'has_archive' => true,
+        'rewrite' => [
+            'slug' => 'books',
+            'with_front' => false,
+        ],
     ];
 
     register_post_type('books', $args);

@@ -61,3 +61,10 @@ a.post-card {
   justify-content: center;
   align-items: center;
 }
+
+.container.custom-cpt {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
