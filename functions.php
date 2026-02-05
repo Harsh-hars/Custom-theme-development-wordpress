@@ -72,4 +72,90 @@ function register_cpt_books()
     register_post_type('books', $args);
 }
 
+
 add_action('init', 'register_cpt_books');
+
+
+// front form upload
+add_shortcode('custom_front_form', 'front_form');
+
+function front_form()
+{
+    ob_start();
+?>
+    <form id="front_form" enctype="multipart/form-data">
+        <p>
+            <input type="text" name="emp_name" placeholder="Employee name">
+        </p>
+        <p>
+            <input type="email" name="emp_email" placeholder="Employee email">
+        </p>
+        <p>
+            <input type="text" name="emp_salary" placeholder="employee salary">
+        </p>
+        <p>
+            <input type="file" name="emp_file">
+        </p>
+        <p>
+            <input type="hidden" name="action" value="save_emp_details">
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+        <p>
+        <div class="res"></div>
+        </p>
+    </form>
+    <script>
+        jQuery('document').ready(function($) {
+            $('#front_form').on('submit', function(e) {
+                e.preventDefault();
+                let formdata = new FormData(this);
+                $.ajax({
+                    url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                    method: 'post',
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function(res) {
+                        $('.res').html(res);
+                    }
+                });
+            })
+        })
+    </script>
+<?php
+    return ob_get_clean();
+}
+
+// ajax action
+
+add_action('wp_ajax_save_emp_details', 'save_emp_details'); // for logged in users
+add_action('wp_ajax_nopriv_save_emp_details', 'save_emp_details');
+
+function save_emp_details()
+{
+    $title = $_POST['emp_name'];
+    $email = $_POST['emp_email'];
+    $salary = $_POST['emp_salary'];
+    $post_id = wp_insert_post(
+        [
+            'post_title' => $title,
+            'post_type' => 'post',
+            'post_status' => 'draft'
+        ]
+    );
+    update_post_meta($post_id, 'emp_email', $email);
+    update_post_meta($post_id, 'emp_salary', $salary);
+    if ($_FILES['emp_file']['name']) {
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        $file = media_handle_upload('emp_file', $post_id);
+        if (!is_wp_error($file)) {
+            update_post_meta($post_id, 'emp_file', $file);
+        }
+    }
+    echo 'form suubmitted successfully';
+    wp_die();
+}
