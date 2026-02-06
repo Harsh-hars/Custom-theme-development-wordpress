@@ -83,7 +83,7 @@ function front_form()
 {
     ob_start();
 ?>
-    <form id="front_form" enctype="multipart/form-data">
+    <form id="front_form" method="post" enctype="multipart/form-data">
         <p>
             <input type="text" name="emp_name" placeholder="Employee name">
         </p>
@@ -103,14 +103,45 @@ function front_form()
             <button type="submit">Submit</button>
         </p>
         <p>
+        <div class="loader" style="display:none;">Submitting...</div>
+        </p>
+        <p>
         <div class="res"></div>
         </p>
     </form>
+    <style>
+        .loader {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #0073aa;
+        }
+
+        .loader::after {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border: 3px solid #ccc;
+            border-top: 3px solid #0073aa;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
     <script>
         jQuery('document').ready(function($) {
             $('#front_form').on('submit', function(e) {
                 e.preventDefault();
-                let formdata = new FormData(this);
+                let data = this
+                let formdata = new FormData(data);
+                $('.loader').show();
                 $.ajax({
                     url: "<?php echo admin_url('admin-ajax.php'); ?>",
                     method: 'post',
@@ -118,7 +149,12 @@ function front_form()
                     processData: false,
                     contentType: false,
                     success: function(res) {
+                        $('loader').hide();
                         $('.res').html(res);
+                        data.reset();
+                    },
+                    complete: function(res) {
+                        $('.loader').hide();
                     }
                 });
             })
@@ -156,6 +192,7 @@ function save_emp_details()
             update_post_meta($post_id, 'emp_file', $file);
         }
     }
+
     echo 'form suubmitted successfully';
     wp_die();
 }
