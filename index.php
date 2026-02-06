@@ -84,6 +84,9 @@ echo wp_pagenavi();
         ?>
     </div>
 
+
+</div>
+<div class="container">
     <!-- front form -->
     <?php echo do_shortcode('[custom_front_form]') ?>
 </div>
