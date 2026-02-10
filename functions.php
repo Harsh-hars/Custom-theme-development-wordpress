@@ -136,30 +136,42 @@ function front_form()
         }
     </style>
     <script>
-        jQuery('document').ready(function($) {
+        jQuery(document).ready(function($) {
+
             $('#front_form').on('submit', function(e) {
                 e.preventDefault();
-                let data = this
-                let formdata = new FormData(data);
+
+                let form = this;
+                let formdata = new FormData(form);
+
                 $('.loader').show();
+                $('.res').html('');
+
                 $.ajax({
                     url: "<?php echo admin_url('admin-ajax.php'); ?>",
-                    method: 'post',
+                    method: 'POST',
                     data: formdata,
                     processData: false,
                     contentType: false,
+
                     success: function(res) {
-                        $('loader').hide();
                         $('.res').html(res);
-                        data.reset();
+                        form.reset();
                     },
-                    complete: function(res) {
+
+                    error: function() {
+                        $('.res').html('<span style="color:red;">Something went wrong</span>');
+                    },
+
+                    complete: function() {
                         $('.loader').hide();
                     }
                 });
-            })
-        })
+            });
+
+        });
     </script>
+
 <?php
     return ob_get_clean();
 }
