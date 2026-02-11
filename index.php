@@ -21,31 +21,27 @@ get_header();
                 </div>
             </a>
 
-    <?php
+        <?php
 
         }
     }
+    // getting the categories
 
+    $categories = get_categories([
+        'taxonomy' => 'category'
+    ]);
+
+    foreach ($categories as $cat) {
+        ?>
+        <a href="<?php echo get_category_link($cat->cat_ID); ?>"><?php echo $cat->name ?></a>
+    <?php
+
+    }
+    echo wp_pagenavi();
     ?>
 </div>
 
 <?php
-
-// getting the categories
-
-$categories = get_categories([
-    'taxonomy' => 'category'
-]);
-
-// print_r($categories);
-
-foreach ($categories as $cat) {
-?>
-    <a href="<?php echo get_category_link($cat->cat_ID); ?>"><?php echo $cat->name ?></a>
-<?php
-
-}
-echo wp_pagenavi();
 
 // displaying custom post type 
 ?>
@@ -83,8 +79,6 @@ echo wp_pagenavi();
         }
         ?>
     </div>
-
-
 </div>
 <div class="container">
     <!-- front form -->
